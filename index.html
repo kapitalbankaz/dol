@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>D'Olivo — Pizza & Pasta</title>
+  <meta name="description" content="D'Olivo Pizza & Pasta – Bakıda ən gözəl İtalyan restoranı. Təzə pasta, pizza və daha çox." />
+  <link rel="icon" type="image/jpg" href="images/logo.jpg" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <button class="nav-logo-btn" onclick="showPage('home')" aria-label="Ana Səhifə">
+      <img src="images/logo.jpg" alt="D'Olivo Logo" class="nav-logo-img" loading="eager" />
+    </button>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menyu aç">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><button onclick="showPage('home'); closeMenu()">Ana Səhifə</button></li>
+      <li><button onclick="showPage('menu'); closeMenu()">Menyu</button></li>
+      <li><button onclick="showPage('gallery'); closeMenu()">Qalerya</button></li>
+      <li><button onclick="showPage('reservation'); closeMenu()">Rezervasiya</button></li>
+      <li><button onclick="showPage('faq'); closeMenu()">FAQ</button></li>
+      <li><button onclick="showPage('vacancies'); closeMenu()">Vakansiyalar</button></li>
+    </ul>
+    <!-- Cart Icon -->
+    <button class="cart-btn" id="cartBtn" onclick="toggleCart()" aria-label="Səbət">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ PAGES ═══════════════════ -->
+
+<!-- ─── HOME PAGE ─── -->
+<main id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <img src="images/logo.jpg" alt="D'Olivo" class="hero-logo" loading="eager" />
+      <p class="hero-subtitle">Bakının ürəyindəki İtalyan zövqü</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('menu')">Menyuya bax</button>
+        <button class="btn-outline" onclick="showPage('reservation')">Rezervasiya et</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-badge">Haqqımızda</div>
+      <h2 class="section-title">D'Olivo — Hekayəmiz</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>D'Olivo, Bakının mərkəzindəki İtalyan mətbəxinin canlı məkanıdır. Adımız zeytundan ilham alır — həyatın dadını, məhəbbətini və sadəliyini simvollaşdıran bu məhsul bizim fəlsəfəmizin özüdür.</p>
+          <p>Hər bir yemək — ən təzə yerli inqrediyentlər, ənənəvi İtalyan reseptləri və aşpazlarımızın sevgisi ilə hazırlanır. Biz yalnız yemək deyil, unudulmaz anlar yaradırıq.</p>
+          <p>Canlı musiqi, mehriban atmosfer və leziz pasta-pizza dünyasına xoş gəlmisiniz.</p>
+        </div>
+        <div class="about-image-wrap">
+          <img src="images/gallery-violinist.jpg" alt="Canlı musiqi" class="about-img" loading="lazy" />
+          <div class="about-badge">
+            <span class="about-badge-num">2019</span>
+            <span class="about-badge-txt">dən bəri</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Working Hours -->
+  <section class="section section-dark" id="hours">
+    <div class="container">
+      <div class="section-badge light">İş Saatları</div>
+      <h2 class="section-title light">Bizi nə vaxt ziyarət edə bilərsiniz?</h2>
+      <div class="hours-grid">
+        <div class="hours-card">
+          <div class="hours-icon">☀️</div>
+          <h3>Bazar ertəsi – Cümə</h3>
+          <p class="hours-time">10:00 – 23:00</p>
+        </div>
+        <div class="hours-card featured">
+          <div class="hours-icon">🌟</div>
+          <h3>Şənbə</h3>
+          <p class="hours-time">10:00 – 00:00</p>
+          <span class="hours-note">Canlı musiqi</span>
+        </div>
+        <div class="hours-card">
+          <div class="hours-icon">🌙</div>
+          <h3>Bazar</h3>
+          <p class="hours-time">11:00 – 23:00</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-badge">Əlaqə</div>
+      <h2 class="section-title">Bizimlə əlaqə saxlayın</h2>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://wa.me/994559406018" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <div class="contact-icon whatsapp-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">WhatsApp</span>
+            <span class="contact-value">+994 55 940 60 18</span>
+          </div>
+          <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a class="contact-card" href="https://www.instagram.com/dolivo.baku/" target="_blank" rel="noopener" aria-label="Instagram">
+          <div class="contact-icon instagram-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Instagram</span>
+            <span class="contact-value">@dolivo.baku</span>
+          </div>
+          <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a class="contact-card" href="https://www.google.com/maps/place/Bak%C4%B1/@40.3947365,49.6898016,32622m/data=!3m2!1e3!4b1!4m6!3m5!1s0x40307d6bd6211cf9:0x343f6b5e7ae56c6b!8m2!3d40.4092617!4d49.8670924!16zL20vMDFnZjU?entry=ttu&g_ep=EgoyMDI2MDcyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" aria-label="Ünvan">
+          <div class="contact-icon map-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Ünvan</span>
+            <span class="contact-value">Bakı, Azərbaycan</span>
+          </div>
+          <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ─── MENU PAGE ─── -->
+<main id="page-menu" class="page">
+  <div class="page-header">
+    <button class="back-btn" onclick="goBack()" aria-label="Geri">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Geri
+    </button>
+    <h1 class="page-title">Menyu</h1>
+    <div class="page-title-spacer"></div>
+  </div>
+
+  <!-- Category Tabs -->
+  <div class="menu-tabs-wrap">
+    <div class="menu-tabs" id="menuTabs">
+      <button class="menu-tab active" onclick="filterMenu('all', this)">Hamısı</button>
+      <button class="menu-tab" onclick="filterMenu('starters', this)">Başlanğıclar</button>
+      <button class="menu-tab" onclick="filterMenu('soups', this)">Şorbalar</button>
+      <button class="menu-tab" onclick="filterMenu('salads', this)">Salatlar</button>
+      <button class="menu-tab" onclick="filterMenu('pasta', this)">Pasta</button>
+      <button class="menu-tab" onclick="filterMenu('breakfast', this)">Səhər yeməyi</button>
+      <button class="menu-tab" onclick="filterMenu('wine', this)">Şərab</button>
+    </div>
+  </div>
+
+  <div class="menu-container" id="menuContainer">
+    <!-- Starters -->
+    <section class="menu-category" data-category="starters" id="cat-starters">
+      <h2 class="cat-title">Başlanğıclar və Qəlyanaltılar</h2>
+      <div class="menu-grid">
+        <div class="menu-item" onclick="openDish(0)">
+          <div class="menu-item-img-wrap">
+            <img src="images/bruschetta-pomodoro.jpg" alt="Bruschetta alla Pomodoro" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(0)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Bruschetta alla Pomodoro</h3>
+            <p>Təzə pomidor, straçetella pendir, reyhan, balzamik sous</p>
+            <span class="price">15 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(1)">
+          <div class="menu-item-img-wrap">
+            <img src="images/bruschetta-salmone.jpg" alt="Bruschetta al Salmone" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(1)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Bruschetta al Salmone</h3>
+            <p>Hisə verilmiş qızıl balıq, avokado, straçetella, reyhan yağı</p>
+            <span class="price">19 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(2)">
+          <div class="menu-item-img-wrap">
+            <img src="images/bruschetta-manzo.jpg" alt="Bruschetta di Manzo" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(2)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Bruschetta di Manzo</h3>
+            <p>Grildə bişmiş tərəvəzlər, can əti, rukola, parmezan</p>
+            <span class="price">18 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(3)">
+          <div class="menu-item-img-wrap">
+            <img src="images/bruschetta-burata.jpg" alt="Bruschetta with Burata" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(3)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Bruschetta with Burata</h3>
+            <p>Bruschetta çörəyi, guacamole, burrata pendir, pomidor</p>
+            <span class="price">18 ₼</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Soups -->
+    <section class="menu-category" data-category="soups" id="cat-soups">
+      <h2 class="cat-title">Şorbalar</h2>
+      <div class="menu-grid">
+        <div class="menu-item" onclick="openDish(4)">
+          <div class="menu-item-img-wrap">
+            <img src="images/soup-cream-cheese.jpg" alt="Cream Cheese Soup" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(4)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Cream Cheese</h3>
+            <p>Parmesan, qaymaq, gauda, çedar (230 qr)</p>
+            <span class="price">7 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(5)">
+          <div class="menu-item-img-wrap">
+            <img src="images/soup-pomodoro.jpg" alt="Crema Pomodoro" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(5)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Crema Pomodoro</h3>
+            <p>Pomidor püresi, təzə qaymaq və parmezan</p>
+            <span class="price">6 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(6)">
+          <div class="menu-item-img-wrap">
+            <img src="images/soup-minestrone.jpg" alt="Minestrone Verdure" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(6)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Minestrone Verdure</h3>
+            <p>Brokoli, göbələk, qulançar, tərəvəzlər, zeytun yağı</p>
+            <span class="price">6 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(7)">
+          <div class="menu-item-img-wrap">
+            <img src="images/soup-zucca.jpg" alt="Zuppa di Zucca" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(7)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Zuppa di Zucca</h3>
+            <p>Balqabaq püresi, toyuq eti, krem, qabaq toxumu</p>
+            <span class="price">6 ₼</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Salads -->
+    <section class="menu-category" data-category="salads" id="cat-salads">
+      <h2 class="cat-title">Salatlar</h2>
+      <div class="menu-grid">
+        <div class="menu-item" onclick="openDish(8)">
+          <div class="menu-item-img-wrap">
+            <img src="images/salad-salmon.jpg" alt="Insalata di Salmone e Avocado" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(8)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Insalata di Salmone e Avocado</h3>
+            <p>Hisə verilmiş qızıl balıq, rukkola, avokado, kapar, limon sosu</p>
+            <span class="price">17 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(9)">
+          <div class="menu-item-img-wrap">
+            <img src="images/salad-kinoa.jpg" alt="Insalata Kinoa" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(9)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Insalata Kinoa</h3>
+            <p>Aysberq, rukola, toyuq filesi, avokado, kinoa, limon-yağ sosu</p>
+            <span class="price">17 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(10)">
+          <div class="menu-item-img-wrap">
+            <img src="images/salad-caesar.jpg" alt="Insalata Caesar Pollo" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(10)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Insalata Caesar Pollo</h3>
+            <p>Romano kahı, qızardılmış toyuq filesi, parmezan, krutun, Sezar sosu</p>
+            <span class="price">14 / 16 ₼ <small>(krevetkalı)</small></span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(11)">
+          <div class="menu-item-img-wrap">
+            <img src="images/beef-bowl.jpg" alt="Beef Bowl" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(11)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Beef Bowl</h3>
+            <p>Can eti, kök, düyü, yumurta, ispanaq, susam sosu</p>
+            <span class="price">17 ₼</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pasta -->
+    <section class="menu-category" data-category="pasta" id="cat-pasta">
+      <h2 class="cat-title">Pasta</h2>
+      <div class="menu-grid">
+        <div class="menu-item" onclick="openDish(12)">
+          <div class="menu-item-img-wrap">
+            <img src="images/pasta-campanelli.jpg" alt="Campanelli con Pomodoro" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(12)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Campanelli con Pomodoro</h3>
+            <p>Qurudulmuş pomidor, tomat sousu, burrata, limon qabuğu, reyhan</p>
+            <span class="price">18 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(13)">
+          <div class="menu-item-img-wrap">
+            <img src="images/pasta-frutti-mare.jpg" alt="Spaghetti Frutti di Mare" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(13)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Spaghetti Frutti di Mare</h3>
+            <p>Dəniz məhsulları, tomat sousu, cəfəri, sarımsaq, ağ şərab</p>
+            <span class="price">24 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(14)">
+          <div class="menu-item-img-wrap">
+            <img src="images/pasta-bolognese.jpg" alt="Spaghetti Bolognese" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(14)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Spaghetti Bolognese</h3>
+            <p>Pomidor sousu ilə bişmiş mal əti, təzə reyhan, parmezan</p>
+            <span class="price">17 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(15)">
+          <div class="menu-item-img-wrap">
+            <img src="images/pasta-pomodoro.jpg" alt="Spaghetti Pomodoro" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(15)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Spaghetti Pomodoro</h3>
+            <p>Pomidor sousu, parmezan, təzə reyhan, zeytun yağı</p>
+            <span class="price">14 ₼</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Breakfast -->
+    <section class="menu-category" data-category="breakfast" id="cat-breakfast">
+      <h2 class="cat-title">Səhər Yeməyi</h2>
+      <div class="menu-grid">
+        <div class="menu-item" onclick="openDish(16)">
+          <div class="menu-item-img-wrap">
+            <img src="images/shakshuka.jpg" alt="Shakshuka" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(16)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Shakshuka</h3>
+            <p>Badımcan, bibər, pomidor, yumurta, ədviyyatlar</p>
+            <span class="price">12 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item" onclick="openDish(17)">
+          <div class="menu-item-img-wrap">
+            <img src="images/sucuklu-yumurta.jpg" alt="Sucuklu Yumurta" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(17)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Sucuklu Yumurta</h3>
+            <p>Sucuk, yumurta, kərə yağı, taze reyhan</p>
+            <span class="price">9 ₼</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wine -->
+    <section class="menu-category" data-category="wine" id="cat-wine">
+      <h2 class="cat-title">Roze Şərab</h2>
+      <div class="menu-grid wine-grid">
+        <div class="menu-item wine-item" onclick="openDish(18)">
+          <div class="menu-item-img-wrap">
+            <img src="images/rose-wine.jpg" alt="Bottega Pinot Grigio Rose" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(18)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Bottega Pinot Grigio Rose</h3>
+            <p>Nazik, meyvəli ətirli İtalyan roze şərabı</p>
+            <span class="price">72 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item wine-item" onclick="openDish(19)">
+          <div class="menu-item-img-wrap">
+            <img src="images/rose-wine.jpg" alt="Meysari Senem" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(19)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Meysari Senem</h3>
+            <p>Yerli Azərbaycan üzümlərindən hazırlanmış roze şərab</p>
+            <span class="price">55 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item wine-item" onclick="openDish(20)">
+          <div class="menu-item-img-wrap">
+            <img src="images/rose-wine.jpg" alt="Chabiant Rose" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(20)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Chabiant Rose</h3>
+            <p>Fransız roze şərabı, yüngül və təravətli</p>
+            <span class="price">42 ₼</span>
+          </div>
+        </div>
+        <div class="menu-item wine-item" onclick="openDish(21)">
+          <div class="menu-item-img-wrap">
+            <img src="images/rose-wine.jpg" alt="Campo Viejo Rose" loading="lazy" />
+            <button class="add-btn" onclick="event.stopPropagation(); addToCart(21)" aria-label="Səbətə əlavə et">+</button>
+          </div>
+          <div class="menu-item-body">
+            <h3>Campo Viejo Rose</h3>
+            <p>İspan roze şərabı, çiçəkli ətir, balanslı ləzzət</p>
+            <span class="price">80 ₼</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- ─── GALLERY PAGE ─── -->
+<main id="page-gallery" class="page">
+  <div class="page-header">
+    <button class="back-btn" onclick="goBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Geri
+    </button>
+    <h1 class="page-title">Qalerya</h1>
+    <div class="page-title-spacer"></div>
+  </div>
+  <div class="gallery-container">
+    <div class="gallery-intro">
+      <p>D'Olivo-nun atmosferi, yeməkləri və canlı müsiqisi ilə doldurulan anlar</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="images/gallery-violinist.jpg" alt="Canlı musiqi" loading="lazy" />
+        <div class="gallery-overlay"><span>Canlı Musiqi</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="images/gallery-restaurant.jpg" alt="Restoran interyeri" loading="lazy" />
+        <div class="gallery-overlay"><span>İnteryer</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="images/menu-hero.jpg" alt="Mükəmməl pasta" loading="lazy" />
+        <div class="gallery-overlay"><span>Pasta</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="images/gallery-pizza.jpg" alt="Pizza" loading="lazy" />
+        <div class="gallery-overlay"><span>Pizza</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="images/gallery-pasta.jpg" alt="Pasta çeşidi" loading="lazy" />
+        <div class="gallery-overlay"><span>Pasta Çeşidləri</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="images/gallery-interior.jpg" alt="Şam yeməyi" loading="lazy" />
+        <div class="gallery-overlay"><span>Şam Yeməyi</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ─── RESERVATION PAGE ─── -->
+<main id="page-reservation" class="page">
+  <div class="page-header">
+    <button class="back-btn" onclick="goBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Geri
+    </button>
+    <h1 class="page-title">Rezervasiya</h1>
+    <div class="page-title-spacer"></div>
+  </div>
+  <div class="form-container">
+    <div class="form-intro">
+      <h2>Masa rezervasiyası</h2>
+      <p>Aşağıdakı formu doldurun, rezervasiya məlumatlarınız birbaşa WhatsApp-a göndəriləcək.</p>
+    </div>
+    <form class="reservation-form" onsubmit="submitReservation(event)" novalidate>
+      <div class="form-group">
+        <label for="res-name">Ad Soyad *</label>
+        <input type="text" id="res-name" placeholder="Adınızı daxil edin" required autocomplete="name" />
+      </div>
+      <div class="form-group">
+        <label for="res-phone">Telefon nömrəsi *</label>
+        <input type="tel" id="res-phone" placeholder="+994 XX XXX XX XX" required autocomplete="tel" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="res-date">Tarix *</label>
+          <input type="date" id="res-date" required />
+        </div>
+        <div class="form-group">
+          <label for="res-time">Saat *</label>
+          <select id="res-time" required>
+            <option value="">Seçin</option>
+            <option>10:00</option><option>10:30</option><option>11:00</option>
+            <option>11:30</option><option>12:00</option><option>12:30</option>
+            <option>13:00</option><option>13:30</option><option>14:00</option>
+            <option>14:30</option><option>15:00</option><option>15:30</option>
+            <option>16:00</option><option>16:30</option><option>17:00</option>
+            <option>17:30</option><option>18:00</option><option>18:30</option>
+            <option>19:00</option><option>19:30</option><option>20:00</option>
+            <option>20:30</option><option>21:00</option><option>21:30</option>
+            <option>22:00</option><option>22:30</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="res-guests">Qonaq sayı *</label>
+        <select id="res-guests" required>
+          <option value="">Seçin</option>
+          <option>1 nəfər</option><option>2 nəfər</option><option>3 nəfər</option>
+          <option>4 nəfər</option><option>5 nəfər</option><option>6 nəfər</option>
+          <option>7 nəfər</option><option>8 nəfər</option><option>9+ nəfər</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="res-note">Qeyd (istəyə bağlı)</label>
+        <textarea id="res-note" placeholder="Xüsusi istəkləriniz, ad günü, allerji məlumatları..." rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp ilə Göndər
+      </button>
+    </form>
+  </div>
+</main>
+
+<!-- ─── FAQ PAGE ─── -->
+<main id="page-faq" class="page">
+  <div class="page-header">
+    <button class="back-btn" onclick="goBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Geri
+    </button>
+    <h1 class="page-title">Tez-tez soruşulan suallar</h1>
+    <div class="page-title-spacer"></div>
+  </div>
+  <div class="faq-container">
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Rezervasiya mütləqdirmi?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Həftə sonları, xüsusilə axşam saatları rezervasiya tövsiyə edilir. Həftəiçi günlər yer tapmaq daha asandır, lakin rezervasiya etmək həmişə yaxşı fikirdir.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Vegetarian yeməkləriniz var?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Bəli! Menyumuzda bir çox vegetarian seçim mövcuddur: Spaghetti Pomodoro, Crema Pomodoro şorbası, Minestrone Verdure, Bruschetta alla Pomodoro və daha çox.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Uşaq stulunuz var?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Bəli, uşaq stullarımız mövcuddur. Ailələri xoş görürük – uşaqlar üçün xüsusi menyu seçimlərimiz də var.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Sifarişi onlayn vermək olur?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Bəli! Saytımızdakı menyu bölməsindən məhsulları seçib səbətinizə əlavə edə bilərsiniz. "Sifariş et" düyməsinə basdıqda sifarişiniz birbaşa WhatsApp vasitəsilə bizə göndəriləcək.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Canlı musiqi neçə gün olur?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Hər şənbə axşamı canlı musiqi proqramamız olur. Violin, fortepiano və caz musiqisi ilə yaddaqalan bir gecə keçirə bilərsiniz.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Parkinq mövcuddur?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Restoranın yaxınlığında ödənişli parkinq sahəsi mövcuddur. Ətraflı məlumat üçün bizimlə əlaqə saxlayın.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Korporativ tədbirlər üçün yer ayrılır?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Bəli! Korporativ nahar, ad günü, nişan və digər xüsusi tədbirlər üçün xüsusi salon ayıra bilərik. Təfərrüatlar üçün WhatsApp-dan bizimlə əlaqə saxlayın.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Kartla ödəniş qəbul olunur?
+          <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="faq-a">Bəli, həm nağd, həm də bank kartı ilə ödəniş qəbul edilir. Visa, Mastercard və yerli bank kartları qəbul olunur.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ─── VACANCIES PAGE ─── -->
+<main id="page-vacancies" class="page">
+  <div class="page-header">
+    <button class="back-btn" onclick="goBack()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Geri
+    </button>
+    <h1 class="page-title">Vakansiyalar</h1>
+    <div class="page-title-spacer"></div>
+  </div>
+  <div class="vacancies-container">
+    <div class="vacancies-intro">
+      <h2>Komandamıza qoşulun</h2>
+      <p>D'Olivo-da işləmək — yalnız bir iş deyil, sənətkarlıq, ehtiraslar toplusudur. Sizi gözləyirik!</p>
+    </div>
+    <div class="vacancies-grid">
+      <div class="vacancy-card" onclick="openVacancy(0)">
+        <div class="vacancy-icon">👨‍🍳</div>
+        <div class="vacancy-info">
+          <h3>Aşpaz (Chef)</h3>
+          <p>İtalyan mətbəxi təcrübəsi olan</p>
+          <span class="vacancy-tag full-time">Tam ştat</span>
+        </div>
+        <svg class="vacancy-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="vacancy-card" onclick="openVacancy(1)">
+        <div class="vacancy-icon">🍽️</div>
+        <div class="vacancy-info">
+          <h3>Ofisiant</h3>
+          <p>Müştəri xidmətinə həvəsli</p>
+          <span class="vacancy-tag full-time">Tam ştat</span>
+        </div>
+        <svg class="vacancy-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="vacancy-card" onclick="openVacancy(2)">
+        <div class="vacancy-icon">☕</div>
+        <div class="vacancy-info">
+          <h3>Barista</h3>
+          <p>Qəhvə hazırlama bacarığı olan</p>
+          <span class="vacancy-tag part-time">Yarım ştat</span>
+        </div>
+        <svg class="vacancy-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="vacancy-card" onclick="openVacancy(3)">
+        <div class="vacancy-icon">🧹</div>
+        <div class="vacancy-info">
+          <h3>Sanitariya işçisi</h3>
+          <p>Mətbəx və salon təmizliyi</p>
+          <span class="vacancy-tag full-time">Tam ştat</span>
+        </div>
+        <svg class="vacancy-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="vacancy-card" onclick="openVacancy(4)">
+        <div class="vacancy-icon">📱</div>
+        <div class="vacancy-info">
+          <h3>SMM Menecer</h3>
+          <p>Sosial media idarəetməsi</p>
+          <span class="vacancy-tag remote">Uzaqdan</span>
+        </div>
+        <svg class="vacancy-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="vacancy-card" onclick="openVacancy(5)">
+        <div class="vacancy-icon">🚗</div>
+        <div class="vacancy-info">
+          <h3>Kuryer</h3>
+          <p>Çatdırılma xidməti üçün</p>
+          <span class="vacancy-tag part-time">Yarım ştat</span>
+        </div>
+        <svg class="vacancy-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ═══════════════════ OVERLAYS ═══════════════════ -->
+
+<!-- Dish Modal -->
+<div class="overlay" id="dishOverlay" onclick="closeDish(event)">
+  <div class="modal dish-modal" id="dishModal">
+    <button class="modal-close" onclick="closeDish()" aria-label="Bağla">✕</button>
+    <div class="dish-img-wrap">
+      <img id="dishImg" src="" alt="" loading="lazy" />
+    </div>
+    <div class="dish-body">
+      <h2 id="dishName"></h2>
+      <p id="dishDesc"></p>
+      <div class="dish-footer">
+        <span class="dish-price" id="dishPrice"></span>
+        <button class="btn-primary" onclick="addToCartFromModal()" id="dishAddBtn">Səbətə əlavə et</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Vacancy Modal -->
+<div class="overlay" id="vacancyOverlay" onclick="closeVacancy(event)">
+  <div class="modal vacancy-modal" id="vacancyModal">
+    <button class="modal-close" onclick="closeVacancy()" aria-label="Bağla">✕</button>
+    <div class="vacancy-modal-icon" id="vacIcon"></div>
+    <h2 id="vacTitle"></h2>
+    <div class="vacancy-modal-info">
+      <div id="vacDetails"></div>
+    </div>
+    <a id="vacApplyBtn" class="btn-submit" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp ilə müraciət et
+    </a>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="overlay" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="modal-close lightbox-close" onclick="closeLightbox()" aria-label="Bağla">✕</button>
+    <button class="lightbox-prev" onclick="event.stopPropagation(); prevPhoto()" aria-label="Əvvəlki">‹</button>
+    <img id="lightboxImg" src="" alt="" />
+    <button class="lightbox-next" onclick="event.stopPropagation(); nextPhoto()" aria-label="Sonrakı">›</button>
+    <p id="lightboxCaption" class="lightbox-caption"></p>
+  </div>
+</div>
+
+<!-- Cart Sidebar -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOutside(event)">
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Səbət</h2>
+      <button class="modal-close" onclick="toggleCart()" aria-label="Bağla">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty" id="cartEmpty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <p>Səbət boşdur</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span>Cəmi:</span>
+        <span id="cartTotal">0 ₼</span>
+      </div>
+      <button class="btn-submit" onclick="orderViaWhatsApp()">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp ilə Sifariş Et
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="nav-backdrop" id="navBackdrop" onclick="closeMenu()"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
